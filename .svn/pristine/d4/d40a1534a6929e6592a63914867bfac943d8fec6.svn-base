@@ -1,0 +1,517 @@
+import React from 'react';
+import WidgetGrid from './widgets/WidgetGrid';
+import JarvisWidget from './widgets/JarvisWidget';
+import Faq from './Faq';
+var Carousel = require('react-responsive-carousel').Carousel;
+import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+import database from '../database';
+import firebase from 'firebase';
+import swal from 'sweetalert'
+
+let carouselData = [
+	{
+		imageName: 'aboutus-1.jpg',
+		contact: 'Call Us @ 09999380082',
+		imageHeading: 'Home Visits From 365 Physio Home Care',
+		imageTitle: '365 Physio Home Care provide a home physiotherapy service, to facilitate those who cannot or do not wish to go to the clinics'
+	},
+	{
+		imageName: 'aboutus-2.jpg',
+		contact: 'Call Us @ 09999380082',
+		imageHeading: 'Home Visits From 365 Physio Home Care',
+		imageTitle: '365 Physio Home Care provide a home physiotherapy service, to facilitate those who cannot or do not wish to go to the clinics'
+	},
+	{
+		imageName: 'aboutus-3.jpg',
+		contact: 'Call Us @ 09999380082',
+		imageHeading: 'Home Visits From 365 Physio Home Care',
+		imageTitle: '365 Physio Home Care provide a home physiotherapy service, to facilitate those who cannot or do not wish to go to the clinics'
+	}]
+
+export default class Home extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {};
+		this.validateForm = this.validateForm.bind(this);
+	}
+	onChange() {
+
+	}
+	onClickItem() {
+
+	}
+	onClickThumb() {
+
+	}
+	validateForm() {
+		let { userName, phone, emailAddress, dateTime, serviceType, address, history } = this.refs;
+		let errorMessage = "";
+		let currentRef;
+		if (!userName.value) {
+			errorMessage = "Please enter your name";
+			currentRef = userName;
+		}
+		else if (!phone.value) {
+			errorMessage = "Please enter your contact number";
+			currentRef = phone;
+		}
+		else if (!emailAddress.value) {
+			errorMessage = "Please enter your email";
+			currentRef = emailAddress;
+		}
+		else if (!dateTime.value) {
+			errorMessage = "Please enter your date for appointment request";
+			currentRef = dateTime;
+		}
+		else if (!serviceType.value) {
+			errorMessage = "Please select service type";
+			currentRef = serviceType;
+		}
+		else if (!address.value) {
+			errorMessage = "Please enter your address";
+			currentRef = address;
+		}
+
+		if (errorMessage) {
+			swal(errorMessage, {
+				buttons: {
+					ok: true,
+				},
+			}).then((value) => {
+				if (value) {
+					currentRef.focus();
+				}
+			});
+		}
+
+		return errorMessage == "";
+	}
+	onSubmitMessageForm(event) {
+		event.preventDefault();
+		if (this.validateForm()) {
+
+			debugger;
+			let { userName, phone, emailAddress, dateTime, serviceType, address, history } = this.refs;
+
+			let data = database.ref('/users/3').once('value').then(function (snapshot) {
+				console.log('Reading data, /n ,  Email: ' + snapshot.val().email + ', Username: ' + snapshot.val().username);
+				// var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+				// ...
+			});
+
+			//writing data
+			database.ref('users/' + 2).set({
+				username: "Pramod",
+				email: "pkanshuman703@gmail.com"
+			});
+		}
+	}
+	render() {
+		return (
+			<div id="content">
+				<div className="carousel-main" id='home'>
+					<Carousel showArrows={true} showThumbs={false} autoPlay={true} interval={2000} infiniteLoop={true} transitionTime={1000}>
+						{carouselData.map(function (item, index) {
+							return <div key={index}>
+								<img className='sliding-img' src={"assets/img/homecarephysio/" + item.imageName} />
+								<p className="legend">
+									<div>{item.contact}</div>
+									<div className='legent-heading'>{item.imageHeading}</div>
+									{item.imageTitle}
+								</p>
+							</div>
+						})}
+					</Carousel>
+				</div>
+				<div className="container">
+					<div className="col-md-12" id='aboutus'>
+						<div className="text-center">
+							<div className='about-us'>Best Care At Home</div>
+							<div className='about-us-content'> 365 physio home care is committed to provide the best physiotherapy services at home. Our aim is to help you get back to your normal life as fast as possible and we send the best physiotherapist at your preferred time</div>
+						</div>
+					</div>
+					&nbsp;
+					<div className="col-md-12"><hr />
+					</div>
+
+					<div className="col-md-12" id='weTreat'><h1>We Treat</h1>
+						<div className="row ptb-40">
+							<div className="col-md-4">
+								<div className="card">
+									<h5>Orthopaedic  Physiotherapy</h5>
+									<ul>
+										<li>Low Back pain.</li>
+										<li>Neck pain.</li>
+										<li>Frozen Shoulder.</li>
+										<li>Disc buldge.</li>
+										<li>Fibromyalgia.</li>
+										<li>Bursitis.</li>
+										<li>Carpal tunnel syndrome.</li>
+										<li>Tennis Elbow.</li>
+
+										<li>Golfers  Elbow.</li>
+										<li>Ankle sprain.</li>
+										<li>Knee replacement.</li>
+										<li>Hip replacement.</li>
+										<li>Osteoarthritis of knee, hip, foot etc.</li>
+										<li>Rheumatoid arthritis.</li>
+										<li>Post fracture rehabilitation.</li>
+										<li>Post operative rehabilitation.</li>
+										<li>Computer related repetitive strain.</li>
+									</ul>
+								</div>
+							</div>
+
+							<div className="col-md-4">
+								<div className="card">
+									<h5>Neuro physiotherapy</h5>
+									<ul>
+										<li>Stroke</li>
+										<li>Multiple sclerosis.</li>
+										<li>Parkinson disease.</li>
+										<li>Bell’s palsy.</li>
+										<li>Traumatic brain injury.</li>
+										<li>Spinal cord injury.</li>
+										<li>Dystonia.</li>
+										<li>Cerebral palsy .</li>
+										<li>Motor neuron disease/Amyotrophic lateral sclerosis.</li>
+										<li>Guillian barre syndrome.</li>
+										<li>Neuropathy.</li>
+									</ul>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="card">
+									<h5>Cardio respiratory physiotherapy</h5>
+									<ul>
+										<li>Chronic Obstructive Pulmonary Disease (COPD)</li>
+										<li>Asthma</li>
+										<li>Bronchiectasis</li>
+										<li>Bronchitis</li>
+										<li>Emphysema</li>
+										<li>Congestive Cardiac Failure (CCF)</li>
+										<li>Respiratory Infections, i.e. Pneumonia</li>
+										<li>Heart surgery</li>
+										<li>Lung surgery</li>
+
+									</ul>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="card">
+									<h5>Sports medicine rehabilitation</h5>
+									<ul>
+										<li>Knee ligament tear (ACL, PCL, MCL, LCL)</li>
+										<li>Collateral ligament sprain</li>
+										<li>Meniscal injury</li>
+										<li>Muscle tear</li>
+										<li>Illiotibial band friction</li>
+										<li>Greater tronchantric bursitis</li>
+										<li>Patellofemoral stress syndrome</li>
+										<li>Osgood schlatter disease</li>
+										<li>Ankle sprain</li>
+										<li>Achilles tendonitis</li>
+										<li>Shin splints</li>
+										<li>Stress fracture</li>
+										<li>Impingement syndrome</li>
+										<li>Lateral epicondylitis</li>
+										<li>Rotator cuff tear</li>
+										<li>Carpal tunnel syndrome</li>
+										<li>Sacroiliac joint dysfunction</li>
+									</ul>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="card">
+									<h5>Elderly physiotherapy care</h5>
+									<ul>
+										<li>Risk of fall</li>
+										<li>Osteoporosis</li>
+										<li>Improper balance and coordination</li>
+										<li>Reduce strength and endurance</li>
+										<li>Anxiety and depression</li>
+									</ul>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="card">
+									<h5>Prenatal and postnatal physiotherapy care</h5>
+									<ul>
+										<li>Back pain</li>
+										<li>Incontinence</li>
+										<li>Increase lumbar lordosis and thoracokyphosis</li>
+										<li>Stretches and weakned abdominal and pelvic floor muscles</li>
+										<li>Reduced joint stability</li>
+										<li>Reduced balance and coordination</li>
+										<li>Help to control pregnancy induce Diabetes</li>
+									</ul>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="card">
+									<h5>Pediatric physiotherapy</h5>
+									<ul>
+										<li>Cerebral palsy</li>
+										<li>Spina bifida</li>
+										<li>Motor dysfunction</li>
+										<li>Progressive neuromuscular disorder</li>
+										<li>Erb palsy</li>
+										<li>Cystic fibrosis</li>
+									</ul>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="card">
+									<h5>Vascular Rehabilitation</h5>
+									<ul>
+										<li>Varicose vein</li>
+										<li>Peripheral artery disease</li>
+										<li>Cerebral vascular disease</li>
+									</ul>
+								</div>
+							</div>
+							<div className="col-md-4">
+								<div className="card">
+									<h5>Physiotherapy in fitness and postural care</h5>
+									<ul>
+										<li>Poor aerobic and endurance capacity</li>
+										<li>Poor muscle strength</li>
+										<li>Bad biomechanics</li>
+										<li>Spinal dysfunction (scoliosis, kyphosis, lordosis)</li>
+										<li>Forward head posture</li>
+										<li>Joint degeneration</li>
+										<li>Rounded shoulders</li>
+										<li>Potbelly</li>
+										<li>Repetitive strain injury</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className="col-md-12"><hr />
+					</div>
+				</div>
+				&nbsp;
+				<section className="wow fadeIn ptb-40 dark-bg-blue2 animated" id='ourApproaches'>
+					<div className="container">
+						<div className="row">
+							<div className="col-md-12 ptb-40">
+								<center>
+									<h3>OUR APPROACHES</h3>
+								</center>
+							</div>
+							<div className="col-md-12">
+								<div className="col-md-6">
+									<div className="card2">
+										<img src="assets/img/homecarephysio/exercise.jpg" className="img-responsive1" />
+										<h5>Exercise therapy</h5>
+										<p>Exercise Therapy includes physical activities designed and prescribed for specific therapeutic goals. Its purpose is to work towards the restoration of normal musculoskeletal function or to reduce pain.</p>
+									</div>
+								</div>
+								<div className="col-md-6">
+									<div className="card2">
+										<img src="assets/img/homecarephysio/electro-therapy.jpg" className="img-responsive1" />
+										<h5>Electrotherapy</h5>
+										<p>Electrotherapy is used to assist pain relief and the natural healing response or inflammation reduction that provides relief and stimulation, which allows you to continue moving and functioning.</p>
+									</div>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="card1">
+									<img src="assets/img/homecarephysio/bimechanics.jpg" className="img-responsive1" />
+									<h5>Biomechanical analysis</h5>
+									<p>Biomechanics is the study of human motion. The study of biomechanics is important when determining what causes injuries and therefore how we can prevent them re-occurring.</p>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="card1">
+									<img src="assets/img/homecarephysio/kineaesio.jpg" className="img-responsive1" />
+									<h5>Kinesiotaping</h5>
+									<p>It has various applications in orthopaedic injuries to provide stability and support to the injured structure. It also helps to improve lymphatic and blood circulation in different affected body part.</p>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="card1">
+									<img src="assets/img/homecarephysio/manual-therapy.jpg" className="img-responsive1" />
+									<h5>Manual therapy</h5>
+									<p>This hands-on approach includes a wide variety of techniques for mobilization and manipulation to asses and treats different musculoskeletal conditions.</p>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="card1">
+									<img src="assets/img/homecarephysio/myofascial.jpg" className="img-responsive1" />
+									<h5>Myofascial Release</h5>
+									<p>The concept of trigger point’s myofascial release therapy. This approach eases up the tension in overloaded tensed muscles and relives the excruciating trigger points.</p>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="card1">
+									<img src="assets/img/homecarephysio/deep-tissue-massage.jpg" className="img-responsive1" />
+									<h5>Deep tissue massage</h5>
+									<p>Deep tissue massage uses firm pressure and slow strokes to reach deeper layers of muscle and fascia . It's used for chronic aches, pain, repetitive strain, postural problems or injuries  and contracted areas such as a stiff neck and upper back, low back pain, leg muscle tightness, and sore shoulders</p>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="card1">
+									<img src="assets/img/homecarephysio/dry-needle.jpg" className="img-responsive1" />
+									<h5>Dry needling</h5>
+									<p>Dry Needling is an approach where acupuncture needle is inserted into the painful trigger point or tender point in the muscles which creates a twitch response in muscle and eases it up.</p>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="card1">
+									<img src="assets/img/homecarephysio/proprioception.jpg" className="img-responsive1" />
+									<h5>Proprioception & Balance Exercises</h5>
+									<p>Proprioceptive and balance exercises teach your body to control the position of a deficient or an injured joint. your brain sends electrical contract or relax messages to your muscles. Your joint movement response is detected by your sensory nervous system and reported back to your brain for fine tuning and improvement with repetition of the process.</p>
+								</div>
+							</div>
+							<div className="col-md-3">
+								<div className="card1">
+									<img src="assets/img/homecarephysio/neurodyna.jpg" className="img-responsive1" />
+									<h5>Neurodynamics</h5>
+									<p>Neurodynamics offers a fresh understanding and management strategies for common syndromes such as radiculopathy, nerve root disorders, carpal tunnel syndromes and spinal pain." "Neuro mobilisation is a method of conservative treatment of disorders of neural tissue.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section id="appointments" className="wow fadeIn ptb ptb-sm-80 material-bg animated">
+					<div className="container">
+						<div className="row">
+							<div className="col-md-12 col-sm-12">
+								<h3><center>Book your appointment</center></h3>
+								<p className="font-white ptb-20 text-center enq-head">
+									Follow the simple steps below and get your appointment fixed online!
+                                </p>
+								<form onSubmit={this.onSubmitMessageForm.bind(this)}>
+									<div className="col-md-offset-2 col-md-8 col-sm-12">
+										<div className="form-field-wrapper col-md-6">
+											<label>Name</label>
+											<input type="text" name="name" className="input-sm form-full" ref='userName' />
+										</div>
+										<div className="form-field-wrapper col-md-6">
+											<label>Contact No</label>
+											<input type="number" name="phone" className="input-sm form-full" ref='phone' />
+										</div>
+
+										<div className="form-field-wrapper col-md-6">
+											<label>Email ID</label>
+											<input type="email" name="email" className="input-sm form-full" ref='emailAddress' />
+										</div>
+
+										<div className="form-field-wrapper col-md-6">
+											<label className="control-label">Date Time</label>
+											<div className="controls input-append date form_datetime" data-date="2016-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii P" data-link-field="dtp_input1">
+												<input size="16" name="dateTime" type="date" className="input-sm form-full" ref='dateTime' />
+											</div>
+											<br />
+										</div>
+
+										<div className="form-field-wrapper col-md-12">
+											<label>Select Service </label>
+											<select className="form-control" name="services" id="services" ref='serviceType'>
+												<option value=""> Select Services</option>
+												<option value="Osteopathy">Osteopathy</option>
+												<option value="Sports Injuries Treament">Sports Injuries Treament</option>
+												<option value="Non-Surgical Orthopaedic Solution">Non-Surgical Orthopaedic Solution</option>
+												<option value="Physiotherapy">Physiotherapy</option>
+												<option value="Premium Home Visit">Premium Home Visit</option>
+												<option value="Posture Correction Program">Posture Correction Program</option>
+												<option value="Injury Prevention Program">Injury Prevention Program</option>
+												<option value="Fall Prevention Program">Fall Prevention Program</option>
+												<option value="Functional Enhancement">Functional Enhancement</option>
+											</select>
+										</div>
+
+										<div className="form-field-wrapper col-md-6">
+											<label>Address with nearby landmark </label>
+											<textarea name="address" className="input-sm form-full" rows="5" ref='address'></textarea>
+										</div>
+										<div className="form-field-wrapper col-md-6">
+											<label>Brief history about your issue</label>
+											<textarea name="history" className="input-sm form-full" rows="5" ref='history'></textarea>
+										</div>
+										<div className="form-field-wrapper col-md-12">
+											<input type="submit" className="btn btn-md btn-submit pull-right" value="Submit" onClick={this.onSubmitMessageForm.bind(this)} />
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section id="faq" className="ptb ptb-sm-80 wow zoomIn animated">
+					<Faq />
+				</section>
+				<section id="contact" className="ptb ptb-sm-80 material-light">
+					<div className="container">
+						<div className="row">
+							<div className="col-md-12 col-sm-12">
+								<h3 className="text-center">Contact Us</h3>
+								<div className=" ptb-40"></div>
+							</div>
+							<div className="col-md-4">
+								<div className="contact-box-left text-center">
+									<div className="row">
+										<div className="col-md-5 col-md-offset-1 col-sm-4 col-xs-6">
+											<div className="page-icon-top">
+												<i className="fa fa-2x fa-facebook-square"></i>
+											</div>
+											<h6><a className="link" target="_blank" href="https://www.facebook.com/Ostephyon">Facebook</a></h6>
+										</div>
+										<div className="col-md-5 col-md-offset-1 col-sm-4 col-xs-6">
+											<div className="page-icon-top">
+												<i className="fa fa-google-plus-square fa-2x"></i>
+											</div>
+											<h6><a className="link" target="_blank" href="https://plus.google.com/">Google plus</a></h6>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div className="col-md-offset-1 col-md-3 col-xs-12">
+								<div className="contact-box-left">
+									<div className="contact-icon-left"><i className="ion ion-ios-telephone"></i></div>
+									<h6>Contact Us</h6>
+									<p className="cal-font">
+										<span>
+											<i className="fa fa-map fa-2x" aria-hidden="true"></i>
+										</span>
+									</p>
+									<div>
+										<hr />
+									</div>
+									<h6>Call Us</h6>
+									<p className="cal-font"><span><b><i className="fa fa-whatsapp fa-2x" aria-hidden="true"></i> +91 - 9999380082</b> </span></p>
+									<p className="cal-font"><span><b><i className="fa fa-phone fa-2x" aria-hidden="true"></i> +91 - 9716144793</b> </span></p>
+								</div>
+							</div>
+
+							<div className="col-md-3 col-xs-12">
+								<div className="contact-box-left">
+									<div className="contact-icon-left"><i className="ion ion-ios-email"></i></div>
+									<h6>For any Information</h6>
+									<p><a href="mailto:365physiohomecare@gmail.com"><b><i className="fa fa-envelope-o" aria-hidden="true"></i>
+										&nbsp;365physiohomecare@gmail.com</b></a></p>
+									<div>
+										<hr />
+									</div>
+									<h6>Administration</h6>
+									<p>
+										<a href="mailto:365physiohomecare@gmail.com"><b><i className="fa fa-envelope-o" aria-hidden="true"></i>
+											&nbsp;365physiohomecare@gmail.com</b>
+										</a>
+									</p>
+									<div>
+										<hr />
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</section>
+			</div>
+		)
+	}
+}

@@ -1,0 +1,57 @@
+{
+	"items": [
+		{
+			"title": "",
+			"route": "/",
+			"icon": "logo",
+			"isLogoImg": true
+		},
+		{
+			"title": "Home",
+			"route": "/",
+			"icon": "fa fa-lg fa-fw fa-home",
+			"scrollTo": "home"
+		},
+		{
+			"title": "About Us",
+			"route": "/",
+			"icon": "fa fa-lg fa-fw fa-home",
+			"scrollTo": "aboutus"
+		},
+		{
+			"title": "We Treat",
+			"route": "/",
+			"icon": "fa fa-lg fa-fw fa-home",
+			"scrollTo": "weTreat"
+		},
+		{
+			"title": "Our Approaches",
+			"route": "/",
+			"icon": "fa fa-lg fa-fw fa-home",
+			"scrollTo": "ourApproaches"
+		},
+		{
+			"title": "Appointments",
+			"route": "/",
+			"icon": "fa fa-lg fa-fw fa-home",
+			"scrollTo": "appointments"
+		},
+		{
+			"title": "Testimonials",
+			"route": "/",
+			"icon": "fa fa-lg fa-fw fa-home",
+			"scrollTo": "testimonial"
+		},
+		{
+			"title": "Contact Us",
+			"route": "/",
+			"icon": "fa fa-lg fa-fw fa-envelope",
+			"scrollTo": "contactUs"
+		},
+		{
+			"title": "09999380082",
+			"route": "/",
+			"icon": "fa fa-lg fa-fw fa-phone"
+		}
+	]
+}

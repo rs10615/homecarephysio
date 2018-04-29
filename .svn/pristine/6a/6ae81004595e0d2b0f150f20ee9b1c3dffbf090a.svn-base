@@ -1,0 +1,244 @@
+.menu-on-top nav {
+	overflow: auto !important;
+}
+
+#left-panel {
+	background: transparent !important;
+	background-color: cadetblue !important;
+	position: fixed;
+}
+
+.menu-on-top aside#left-panel nav>ul {
+	text-align: center;
+}
+
+#left-panel nav>ul>li {
+	float: none !important;
+}
+
+.menu-on-top aside#left-panel nav>ul>li:hover>a {
+	color: black !important;
+	background-color: white !important;
+}
+
+.menu-on-top .menu-item-parent {
+	max-width: 160px;
+	min-width: 100px;
+}
+
+.smart-style-5 nav ul .active>a {
+	color: white !important
+}
+
+.smart-style-5 nav ul .active>a:hover {
+	color: white !important;
+	background-color: red;
+}
+
+@media (min-width:640px) {
+	#header {
+		display: none;
+	}
+}
+
+.page-footer {
+	margin-top: 152px;
+}
+
+.aboutus {
+	width: 100%;
+	max-width: 100%;
+}
+
+.ortho {
+	height: 150px;
+	width: 150px;
+}
+
+.lead {
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 24px;
+	padding: 10px 100px;
+}
+
+.card {
+	padding: 20px !important;
+	min-height: 384px !important;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+	margin-bottom: 40px;
+	background: #fff;
+	border: 1px solid black;
+	height: 400px;
+	color: black;
+}
+
+.card1 {
+	min-height: 457px !important;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+	margin-bottom: 20px;
+	text-align: center;
+	background: #fff;
+	border-radius: 2px;
+	color: black;
+}
+
+.card2 {
+	min-height: 320px !important;
+	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+	margin-bottom: 20px;
+	text-align: center;
+	background: #fff;
+	border-radius: 2px;
+	color: black;
+}
+
+.img-responsive1 {
+	width: 100%;
+	max-height: 200px;
+	min-height: 200px;
+}
+
+.dark-bg-blue {
+	background: #0082e6;
+	color: #fff;
+}
+
+#content {
+	padding: 0px;
+}
+
+.foot-prb {
+	background-color: cadetblue;
+	color: white;
+}
+
+.font-white {
+	font-size: 15px !important;
+	letter-spacing: 1px !important;
+	color: #fff !important;
+	font-weight: 600 !important;
+	font-style: italic;
+}
+
+.form-field-wrapper {
+	margin-bottom: 20px;
+}
+
+.form-full {
+	width: 100%;
+	color: grey;
+}
+
+.material-bg {
+	background: url(../img/material-bg-grey.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: #fff;
+}
+
+.mt-25 {
+	margin-top: 25px;
+}
+
+.accordion-section {
+	border-top: 1px solid #f1f1f1;
+	border-left: 1px solid #f1f1f1;
+	border-right: 1px solid #f1f1f1;
+}
+
+.accordion-content {
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-top: 0;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+}
+
+.accordion-content.defualt-hidden {
+	margin: 0;
+	background: grey;
+}
+
+.accordion-title {
+	cursor: pointer;
+	display: block;
+	position: relative;
+	padding: 15px 20px;
+	margin: 0px;
+	background: darkslategrey;
+	font-size: 17px !important;
+	font-weight: 500;
+}
+
+.accordion-title.active {
+	color: #FF9800;
+}
+
+.legent-heading {
+	font-size: 1.8em !important;
+	margin-bottom: 30px !important;
+	opacity: 1 !important;
+	font-family: cursive;
+	font-style: italic;
+}
+
+.carousel .slide .legend {
+	background: none !important;
+	font-size: 1.8em !important;
+}
+
+.custom-wrap {
+	display: block;
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+.about-us {
+	font-size: 4em;
+}
+
+.about-us-content {
+	font-size: 2em;
+}
+
+.sliding-img {
+	max-height: 400px;
+}
+
+.logo-img {
+	background: url(../img/homecarephysio/logo-white-1.jpg);
+	height: 50px;
+	width: 150px;
+	display: inline-block;
+	transform: scale(0.5);
+}
+
+li.logo {
+	display: inline;
+}
+
+li.logo a {
+	width: 155px;
+	height: 56px !important;
+	background: url('../img/homecarephysio/logo-white-1.jpg') top left no-repeat;
+}
+
+li.logo a:hover {
+	width: 155px;
+	height: 56px;
+	background: url('../img/homecarephysio/logo-white-1.jpg') top left no-repeat;
+	background-color: inherit !important;
+}
+
+.btn-submit {
+	background-color: #0e2f38 !important;
+}
+
+.enq-head, label {
+	color: #0e2f38 !important;
+}

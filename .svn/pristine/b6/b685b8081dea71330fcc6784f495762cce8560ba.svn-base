@@ -1,0 +1,14 @@
+import React from 'react';
+import { Route, Router, IndexRedirect, browserHistory, IndexRoute } from 'react-router';
+import Layout from '../components/common/Layout';
+import Home from '../components/Home';
+
+export default (
+    <Router history={browserHistory}>
+        <Route>
+            <Route component={Layout}>
+                <Route path="/" component={Home} />
+            </Route>
+        </Route>
+    </Router>
+);

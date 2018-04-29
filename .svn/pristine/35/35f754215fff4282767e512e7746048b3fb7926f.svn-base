@@ -1,0 +1,23 @@
+1. Download node(According to your OS type like 32 bit/64 bit).
+2. Download Visual Studio Code.
+3. Download svn.
+4. Download Tortoise SVN.
+5. Now goto explorer drive(like d:)
+6. Right click on this folder and select SVN Checkout and paste URL in textbox:-
+	https://app.deveo.com/pramodsoftwarepvtltd/projects/homecarephysio/repositories/subversion/homecarephysio/
+7. It will ask for Username and Password.
+	username - pkanshuman703@gmail.com
+8. Ask for password from admin and paste and click on OK.
+9. Once download of this comletes, Open Visual Studio Code.
+10. Click on File menu > Open Folder > Select your folder location.
+11. Now click on Debug button from left side. It will open debug console.
+12. Goto terminal tab.
+13. Run below command which will download all node modules.
+	npm install
+14. now run below command:-
+	npm run dev
+15. Once it show successfull message in Terminal, open browser and run below URL:-
+	http://localhost:2205/
+16. Project starts successfully.
+
+
